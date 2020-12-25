@@ -10,23 +10,8 @@
     tools:context=".RegisterForm">
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
 
-        >
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter Full Name"
-            android:ems="10"
-            android:inputType="text"
-            android:textSize="22sp"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,31 +22,13 @@
         >
 
         <EditText
+            android:id="@+id/txt_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="User Name"
             android:ems="10"
-            android:inputType="text"
-            android:textSize="22sp"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-
-        android:layout_marginTop="7dp"
-        >
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:hint="Enter Email"
-            android:ems="10"
             android:inputType="text"
-            android:textSize="22sp"
-            />
+            android:textSize="22sp" />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -73,11 +40,12 @@
         >
 
         <EditText
+            android:id="@+id/txt_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter Password"
             android:ems="10"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:textSize="22sp"
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -91,51 +59,27 @@
         >
 
         <EditText
+            android:id="@+id/txt_confirm_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Confirm Password"
             android:ems="10"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:textSize="22sp"
             />
     </com.google.android.material.textfield.TextInputLayout>
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Gender"
-            android:textSize="20dp">
 
-        </TextView>
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Male"
-            android:textSize="20dp">
 
-        </RadioButton>
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Female"
-            android:textSize="20dp"
-            android:layout_marginLeft="10dp">
 
-        </RadioButton>
-
-    </RadioGroup>
     <Button
+        android:id="@+id/btn_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/btn_rounded"
         android:text="Register"
         android:textSize="20dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/btn_rounded">
+        app:backgroundTint="@color/colorAccent">
 
     </Button>
 </LinearLayout>
