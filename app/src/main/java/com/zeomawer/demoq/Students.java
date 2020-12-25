@@ -2,21 +2,24 @@ package com.zeomawer.demoq;
 
 public class Students {
 
-    private String name, father_name, mother_name, residence;
+    private String std_name, father_name, mother_name, residence,Gender;
+    public Students(){}
 
-    public Students(String name, String father_name, String mother_name, String residence) {
-        this.name = name;
+    public Students(String std_name, String father_name, String mother_name, String residence, String gender) {
+        this.std_name = std_name;
         this.father_name = father_name;
         this.mother_name = mother_name;
         this.residence = residence;
+        this.Gender = gender;
+
     }
 
     public String getName() {
-        return name;
+        return std_name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.std_name = name;
     }
 
     public String getFather_name() {
@@ -41,5 +44,13 @@ public class Students {
 
     public void setResidence(String residence) {
         this.residence = residence;
+    }
+
+    public String getGender() {
+        return Gender;
+    }
+
+    public void setGender(String gender) {
+        this.Gender = gender;
     }
 }

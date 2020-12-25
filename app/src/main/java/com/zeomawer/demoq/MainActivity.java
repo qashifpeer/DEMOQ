@@ -19,7 +19,8 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
     EditText t1,t2,t3,t4,t5;
-    //RadioButton r1,r2;
+    String gender="";
+    RadioButton r1,r2;
 
 
 
@@ -39,16 +40,23 @@ public class MainActivity extends AppCompatActivity {
         t3=findViewById(R.id.father_name);
         t4=findViewById(R.id.mother_name);
         t5=findViewById(R.id.residance);
-       // r1=findViewById(R.id.radio_male);
-        //r2=findViewById(R.id.radio_female);
+        r1=findViewById(R.id.radio_male);
+        r2=findViewById(R.id.radio_female);
 
         String adNo=t1.getText().toString().trim();
         String Name=t2.getText().toString().trim();
         String father_name=t3.getText().toString().trim();
         String mother_name=t4.getText().toString().trim();
         String res=t5.getText().toString().trim();
-        //String male=r1.getText().toString();
-        //String female=r2.getText().toString();
+
+
+        if (r1.isChecked()){
+            gender="Male";
+        }
+        if (r2.isChecked()){
+            gender="Female";
+        }
+
 
         if(TextUtils.isEmpty(adNo)){
             Toast.makeText(MainActivity.this, "Please Enter Admission Number", Toast.LENGTH_SHORT).show();
@@ -72,8 +80,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        Students obj=new Students(Name,father_name,mother_name,res);
+        Students obj=new Students(Name,father_name,mother_name,res,gender);
         FirebaseDatabase db=FirebaseDatabase.getInstance();
+
+
         DatabaseReference node=db.getReference("students");
 
         node.child(adNo).setValue(obj);
@@ -83,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
         t3.setText("");
         t4.setText("");
         t5.setText("");
+
 
         Toast.makeText(this, "Data Submitted Successfully", Toast.LENGTH_SHORT).show();
 
