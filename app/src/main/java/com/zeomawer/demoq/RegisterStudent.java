@@ -1,23 +1,18 @@
 package com.zeomawer.demoq;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-public class MainActivity extends AppCompatActivity {
+public class RegisterStudent extends AppCompatActivity {
     EditText t1,t2,t3,t4,t5;
     String gender="";
     RadioButton r1,r2;
@@ -27,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_register_student);
 
 
     }
@@ -59,23 +54,23 @@ public class MainActivity extends AppCompatActivity {
 
 
         if(TextUtils.isEmpty(adNo)){
-            Toast.makeText(MainActivity.this, "Please Enter Admission Number", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegisterStudent.this, "Please Enter Admission Number", Toast.LENGTH_SHORT).show();
             return;
         }
         if(TextUtils.isEmpty(Name)){
-            Toast.makeText(MainActivity.this, "Please Enter your Name", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegisterStudent.this, "Please Enter your Name", Toast.LENGTH_SHORT).show();
             return;
         }
         if(TextUtils.isEmpty(father_name)){
-            Toast.makeText(MainActivity.this, "Please Enter Father's Name", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegisterStudent.this, "Please Enter Father's Name", Toast.LENGTH_SHORT).show();
             return;
         }
         if(TextUtils.isEmpty(mother_name)){
-            Toast.makeText(MainActivity.this, "Please Enter Mother's", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegisterStudent.this, "Please Enter Mother's", Toast.LENGTH_SHORT).show();
             return;
         }
         if(TextUtils.isEmpty(res)){
-            Toast.makeText(MainActivity.this, "Please Enter Residence", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegisterStudent.this, "Please Enter Residence", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -94,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
         t4.setText("");
         t5.setText("");
 
+        r1.setChecked(false);
+        r2.setChecked(false);
 
         Toast.makeText(this, "Data Submitted Successfully", Toast.LENGTH_SHORT).show();
 
