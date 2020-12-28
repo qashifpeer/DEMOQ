@@ -2,20 +2,34 @@ package com.zeomawer.demoq;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class RegisterStudent extends AppCompatActivity {
-    EditText t1,t2,t3,t4,t5;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+
+public class RegisterStudent extends AppCompatActivity  {
+    EditText t1,t2,t3,t4,t5,t6;
     String gender="";
     RadioButton r1,r2;
+    private static final String TAG= "RegisterStudent";
+    private EditText mDisplayDate;
+    private DatePickerDialog.OnDateSetListener onDateSetListener ;
 
 
 
@@ -24,6 +38,36 @@ public class RegisterStudent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_student);
 
+        mDisplayDate= (EditText) findViewById(R.id.dob);
+
+        mDisplayDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Calendar cal=Calendar.getInstance();
+                int year=cal.get(Calendar.YEAR);
+                int month=cal.get(Calendar.MONTH);
+                int day=cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog=new DatePickerDialog(
+                        RegisterStudent.this, android.R.style.Theme_DeviceDefault_Dialog_MinWidth,
+                        onDateSetListener,
+                        year,month,day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                dialog.show();
+            }
+        });
+
+        onDateSetListener=new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                 month=month+1;
+                 String date=dayOfMonth+ "/" + month + "/" +year;
+                 mDisplayDate.setText(date);
+
+            }
+        };
 
     }
 
@@ -35,6 +79,7 @@ public class RegisterStudent extends AppCompatActivity {
         t3=findViewById(R.id.father_name);
         t4=findViewById(R.id.mother_name);
         t5=findViewById(R.id.residance);
+        t6=findViewById(R.id.dob);
         r1=findViewById(R.id.radio_male);
         r2=findViewById(R.id.radio_female);
 
@@ -43,6 +88,7 @@ public class RegisterStudent extends AppCompatActivity {
         String father_name=t3.getText().toString().trim();
         String mother_name=t4.getText().toString().trim();
         String res=t5.getText().toString().trim();
+        String dob=t6.getText().toString();
 
 
         if (r1.isChecked()){
@@ -75,7 +121,7 @@ public class RegisterStudent extends AppCompatActivity {
         }
 
 
-        Students obj=new Students(Name,father_name,mother_name,res,gender);
+        Students obj=new Students(Name,father_name,mother_name,res,gender,dob);
         FirebaseDatabase db=FirebaseDatabase.getInstance();
 
 
@@ -88,13 +134,16 @@ public class RegisterStudent extends AppCompatActivity {
         t3.setText("");
         t4.setText("");
         t5.setText("");
-
+        t6.setText("");
         r1.setChecked(false);
         r2.setChecked(false);
 
         Toast.makeText(this, "Data Submitted Successfully", Toast.LENGTH_SHORT).show();
 
     }
+
+
+
 }
 
 

@@ -5,9 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="30dp"
+    android:padding="20dp"
     android:background="@color/background"
     tools:context=".RegisterStudent">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -25,7 +34,7 @@
             android:ems="10"
             android:hint="Admission Number"
             android:inputType="text"
-            android:textSize="18sp" />
+            android:textSize="10sp" />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -43,7 +52,7 @@
             android:ems="10"
             android:hint="Student Name"
             android:inputType="text"
-            android:textSize="18sp" />
+            android:textSize="10sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -62,7 +71,7 @@
             android:ems="10"
             android:hint="Father's Name"
             android:inputType="text"
-            android:textSize="18sp" />
+            android:textSize="10sp" />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -80,28 +89,54 @@
             android:ems="10"
             android:hint="Mother's Name"
             android:inputType="text"
-            android:textSize="18sp" />
+            android:textSize="10sp" />
     </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
 
-        android:layout_marginTop="7dp"
-        >
+                android:layout_marginTop="7dp"
+                >
 
-        <EditText
-            android:id="@+id/residance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Residance"
-            android:inputType="text"
-            android:textSize="18sp" />
-    </com.google.android.material.textfield.TextInputLayout>
+                <EditText
+                    android:id="@+id/residance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Residance"
+                    android:inputType="text"
+                    android:textSize="12sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="7dp"
+                >
+
+                <EditText
+                    android:id="@+id/dob"
+                    android:longClickable="false"
+                    android:focusableInTouchMode="false"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:clickable="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Date of birth (dd-mm-yyyy)"
+                    android:inputType="none"
+                    android:textSize="12sp" />
+            </com.google.android.material.textfield.TextInputLayout>
     <RadioGroup
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:id="@+id/radioGroup"
@@ -110,14 +145,19 @@
             android:id="@+id/radio_male"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Male"/>
+            android:text="Male"
+            android:layout_marginRight="5dp"/>
         <RadioButton
             android:id="@+id/radio_female"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:text="Female"/>
 
     </RadioGroup>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
     <Button
         android:id="@+id/btnSubmit"
         android:layout_width="match_parent"
