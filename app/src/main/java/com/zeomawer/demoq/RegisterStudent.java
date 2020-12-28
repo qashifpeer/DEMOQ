@@ -24,7 +24,7 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class RegisterStudent extends AppCompatActivity  {
-    EditText t1,t2,t3,t4,t5,t6;
+    EditText t1,t2,t3,t4,t5,t6,t7,t8;
     Spinner c1;
     String gender="";
     RadioButton r1,r2;
@@ -38,7 +38,7 @@ public class RegisterStudent extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_student);
-
+        getSupportActionBar().setTitle("Register Student");
 
 
         //************** code for DOB of Student****** Begins*****
@@ -109,6 +109,8 @@ public class RegisterStudent extends AppCompatActivity  {
         c1=findViewById(R.id.classSpinner);
         r1=findViewById(R.id.radio_male);
         r2=findViewById(R.id.radio_female);
+        t7=findViewById(R.id.uid);
+        t8=findViewById(R.id.phone);
 
         String adNo=t1.getText().toString().trim();
         String Name=t2.getText().toString().trim();
@@ -117,6 +119,8 @@ public class RegisterStudent extends AppCompatActivity  {
         String res=t5.getText().toString().trim();
         String spinnerClass=c1.getSelectedItem().toString();
         String dob=t6.getText().toString();
+        String uid=t7.getText().toString();
+        String phone=t8.getText().toString();
 
 
         if (r1.isChecked()){
@@ -147,9 +151,39 @@ public class RegisterStudent extends AppCompatActivity  {
             Toast.makeText(RegisterStudent.this, "Please Enter Residence", Toast.LENGTH_SHORT).show();
             return;
         }
+        if(TextUtils.isEmpty(uid)){
+            Toast.makeText(RegisterStudent.this, "Please Enter Your Aadhar Number", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(uid.length()!=12){
+            Toast.makeText(RegisterStudent.this, "Aadhar Number Should be of 12 Digits", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(TextUtils.isEmpty(dob)){
+            Toast.makeText(RegisterStudent.this, "Please Enter Date Of Birth", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(TextUtils.isEmpty(phone)){
+            Toast.makeText(RegisterStudent.this, "Please Enter Phone Number", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(phone.length()!=10){
+            Toast.makeText(RegisterStudent.this, "Phone Number Should be oF 10 Digits", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(TextUtils.isEmpty(spinnerClass)){
+            Toast.makeText(RegisterStudent.this, "Please Select Class", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(TextUtils.isEmpty(gender)){
+            Toast.makeText(RegisterStudent.this, "Please Select Gender", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
 
-        Students obj=new Students(Name,father_name,mother_name,res,gender,dob,spinnerClass);
+        Students obj=new Students(Name,father_name,mother_name,res,gender,dob,spinnerClass,uid,phone);
         FirebaseDatabase db=FirebaseDatabase.getInstance();
 
 
@@ -166,6 +200,8 @@ public class RegisterStudent extends AppCompatActivity  {
         r1.setChecked(false);
         r2.setChecked(false);
         c1.setSelected(false);
+        t7.setText("");
+        t8.setText("");
 
         Toast.makeText(this, "Data Submitted Successfully", Toast.LENGTH_SHORT).show();
 
