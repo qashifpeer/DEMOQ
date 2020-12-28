@@ -25,12 +25,13 @@ import java.util.Locale;
 
 public class RegisterStudent extends AppCompatActivity  {
     EditText t1,t2,t3,t4,t5,t6;
+    Spinner c1;
     String gender="";
     RadioButton r1,r2;
     private static final String TAG= "RegisterStudent";
     private EditText mDisplayDate;
     private DatePickerDialog.OnDateSetListener onDateSetListener ;
-
+    Spinner classSpinner;
 
 
     @Override
@@ -38,8 +39,10 @@ public class RegisterStudent extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_student);
 
-        mDisplayDate= (EditText) findViewById(R.id.dob);
 
+
+        //************** code for DOB of Student****** Begins*****
+        mDisplayDate= (EditText) findViewById(R.id.dob);
         mDisplayDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,6 +71,29 @@ public class RegisterStudent extends AppCompatActivity  {
 
             }
         };
+        //************** code for DOB of Student****** End hre*****
+
+        //************** code for Spinner Class of Student****** Begins hre*****
+        classSpinner = (Spinner) findViewById(R.id.classSpinner);
+        classSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+            {
+                // do something upon option selection
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+                // can leave this empty
+            }
+        });
+
+
+
+        //************** code for Spinner Class of Student****** End hre*****
+
 
     }
 
@@ -80,6 +106,7 @@ public class RegisterStudent extends AppCompatActivity  {
         t4=findViewById(R.id.mother_name);
         t5=findViewById(R.id.residance);
         t6=findViewById(R.id.dob);
+        c1=findViewById(R.id.classSpinner);
         r1=findViewById(R.id.radio_male);
         r2=findViewById(R.id.radio_female);
 
@@ -88,6 +115,7 @@ public class RegisterStudent extends AppCompatActivity  {
         String father_name=t3.getText().toString().trim();
         String mother_name=t4.getText().toString().trim();
         String res=t5.getText().toString().trim();
+        String spinnerClass=c1.getSelectedItem().toString();
         String dob=t6.getText().toString();
 
 
@@ -121,7 +149,7 @@ public class RegisterStudent extends AppCompatActivity  {
         }
 
 
-        Students obj=new Students(Name,father_name,mother_name,res,gender,dob);
+        Students obj=new Students(Name,father_name,mother_name,res,gender,dob,spinnerClass);
         FirebaseDatabase db=FirebaseDatabase.getInstance();
 
 
@@ -137,6 +165,7 @@ public class RegisterStudent extends AppCompatActivity  {
         t6.setText("");
         r1.setChecked(false);
         r2.setChecked(false);
+        c1.setSelected(false);
 
         Toast.makeText(this, "Data Submitted Successfully", Toast.LENGTH_SHORT).show();
 

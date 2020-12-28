@@ -110,7 +110,13 @@
                     android:textSize="12sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
-
+            <Spinner
+                android:id="@+id/classSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/selectClass"
+                android:layout_marginTop="25dp"
+                android:entries="@array/items_class"/>
 
 
 
