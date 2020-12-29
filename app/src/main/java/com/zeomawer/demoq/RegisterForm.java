@@ -72,6 +72,7 @@ public class RegisterForm extends AppCompatActivity {
 
                                         startActivity(new Intent(getApplicationContext(),LoginForm.class));
                                         Toast.makeText(RegisterForm.this, "Registration Complete,Please Login", Toast.LENGTH_SHORT).show();
+                                        finish();
                                     }
 
                                      else {
